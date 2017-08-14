@@ -26,6 +26,13 @@ obj/
 .idea/
 
 
+# ===================================== #
+# UFPS Plugins #
+# ===================================== #
+Assets/UFPS/
+Assets/UFPS.meta
+
+
 # ============ #
 # OS generated #
 # ============ #
@@ -36,3 +43,9 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+Assets/Plugins/Editor.meta
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs.meta
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs
+Assets/Plugins/Editor/JetBrains.meta
+
+
