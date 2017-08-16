@@ -12,7 +12,7 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using SupportClassPun = ExitGames.Client.Photon.SupportClass;
-
+using UnityEngine.Profiling;
 
 /// <summary>
 /// Internal Monobehaviour that allows Photon to run an Update loop.
@@ -121,9 +121,9 @@ internal class PhotonHandler : Photon.MonoBehaviour
         while (PhotonNetwork.isMessageQueueRunning && doDispatch)
         {
             // DispatchIncomingCommands() returns true of it found any command to dispatch (event, result or state change)
-            UnityEngine.Profiling.Profiler.BeginSample("DispatchIncomingCommands");
+            Profiler.BeginSample("DispatchIncomingCommands");
             doDispatch = PhotonNetwork.networkingPeer.DispatchIncomingCommands();
-            UnityEngine.Profiling.Profiler.EndSample();
+            Profiler.EndSample();
         }
 
         int currentMsSinceStart = (int)(Time.realtimeSinceStartup * 1000);  // avoiding Environment.TickCount, which could be negative on long-running platforms
@@ -141,9 +141,9 @@ internal class PhotonHandler : Photon.MonoBehaviour
             while (PhotonNetwork.isMessageQueueRunning && doSend)
             {
                 // Send all outgoing commands
-                UnityEngine.Profiling.Profiler.BeginSample("SendOutgoingCommands");
+                Profiler.BeginSample("SendOutgoingCommands");
                 doSend = PhotonNetwork.networkingPeer.SendOutgoingCommands();
-                UnityEngine.Profiling.Profiler.EndSample();
+                Profiler.EndSample();
             }
 
             this.nextSendTickCount = currentMsSinceStart + this.updateInterval;
